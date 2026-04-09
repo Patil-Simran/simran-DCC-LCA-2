@@ -6,7 +6,7 @@
 2. **Task 1:** `bully-election/README.md` — compile & run Java, run `demo`, save output/screenshot to `screenshots/`.
 3. **Task 2:** `nfs/README.md` — two Linux VMs, server then client commands, screenshots to `screenshots/`.
 4. **Task 3:** `cloud-deployment/README.md` — `npm install` / `npm start`, deploy (e.g. Render), screenshot live URL + API.
-5. `git add` → `git commit` → `git push` to your GitHub (no tokens/passwords in repo).
+5. `git add` → `git commit` → `git push` to your GitHub .
 
 ## Folders
 
