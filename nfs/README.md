@@ -11,7 +11,7 @@ for mount use **`127.0.0.1`** instead of `SERVER_IP` (e.g. `sudo mount -t nfs 12
    - Simple: `/srv/nfs/share *(rw,sync,no_subtree_check,no_root_squash)`
    - Or: `/srv/nfs/share CLIENT_IP(rw,sync,no_subtree_check)`
 5. `sudo exportfs -ra && sudo systemctl restart nfs-kernel-server`
-6. If `ufw` on: `sudo ufw allow from CLIENT_IP to any port nfs` and port `111` (or ask instructor).
+6. If `ufw` on: `sudo ufw allow from CLIENT_IP to any port nfs` and port `111`.
 
 ## Steps — client
 
