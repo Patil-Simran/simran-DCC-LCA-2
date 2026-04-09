@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DCC — Cloud Deployment Demo</title>
+  <style>
+    :root {
+      --bg: #0f1419;
+      --card: #1a2332;
+      --accent: #3d9eff;
+      --text: #e7eef7;
+      --muted: #8b9cb3;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(ellipse at top, #1a2a3d 0%, var(--bg) 55%);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+    main {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 2rem 2.25rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 24px 48px rgba(0,0,0,.35);
+      border: 1px solid rgba(61,158,255,.2);
+    }
+    h1 { font-size: 1.35rem; margin: 0 0 0.5rem; font-weight: 600; }
+    p { color: var(--muted); margin: 0 0 1.25rem; line-height: 1.5; font-size: 0.95rem; }
+    #status {
+      font-family: ui-monospace, monospace;
+      font-size: 0.8rem;
+      background: rgba(0,0,0,.35);
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      min-height: 4rem;
+    }
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #061018;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { filter: brightness(1.08); }
+    .badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--accent);
+      margin-bottom: 0.35rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <span class="badge">Task 3 — Cloud</span>
+    <h1>Deployment OK</h1>
+    <p>This page is served from your cloud platform. Use the button to call the API and prove the backend is live.</p>
+    <div id="status">Click “Ping API”…</div>
+    <button type="button" id="ping">Ping API</button>
+  </main>
+  <script>
+    document.getElementById("ping").addEventListener("click", async () => {
+      const el = document.getElementById("status");
+      el.textContent = "Loading…";
+      try {
+        const r = await fetch("/api/health");
+        const j = await r.json();
+        el.textContent = JSON.stringify(j, null, 2);
+      } catch (e) {
+        el.textContent = "Error: " + e.message;
+      }
+    });
+  </script>
+</body>
+</html>

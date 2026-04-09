@@ -1,0 +1,5 @@
+node_modules/
+*.class
+bully-election/bully.exe
+bully-election/bully
+.DS_Store
